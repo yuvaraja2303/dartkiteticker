@@ -6,7 +6,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 import 'package:collection/collection.dart';
 
-const ZERODHA_XCALDATA_WEB_SOCKET_PRICE_TICKER="wss://ws.kite.trade?api_key=xxxx&access_token=xxxx";
+const WSSURL="wss://ws.kite.trade?api_key=:api_key:&access_token=:access_token:";
 
 const MODE_LTP = 'ltp';
 const MODE_QUOTE = 'quote';
@@ -31,11 +31,11 @@ class KiteTicker {
   late WebSocketChannel _channel;
   late StreamController<dynamic> _streamController;
 
-  KiteTicker({required String accesstoken}) {
+  KiteTicker({required String apikey,required String accesstoken}) {
     _streamController = StreamController<dynamic>();
 
     this._channel = WebSocketChannel.connect(
-      Uri.parse(ZERODHA_XCALDATA_WEB_SOCKET_PRICE_TICKER + accesstoken),
+      Uri.parse(WSSURL.replaceFirst(RegExp(r':api_key:'), apikey).replaceFirst(RegExp(r':access_token:'), accesstoken)),
     )..stream.listen((bin) {
         if (!(bin is String)) {
           try {
