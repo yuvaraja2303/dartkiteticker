@@ -1,0 +1,13 @@
+name: xcaldata
+description: A new Flutter application.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' #
+
+environment:
+
+  sdk: ">=2.12.0 <4.0.0"
+
+dependencies:
+    web_socket_channel: ^2.3.0
