@@ -10,7 +10,7 @@ The WebSocket API is the most efficient (speed, latency, resource consumption, a
  ticker = KiteTicker(apikey:"xxxx",accesstoken:"xxxxx");
  
  //Listener set for each tick
- ticker.stream listen((List<dynamic> event){
+ ticker.stream.listen((List<dynamic> event){
  
  //data quotes
  print(event);
